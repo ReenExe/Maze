@@ -2,6 +2,7 @@ maze = {
     step = {},
     menu = {},
     game = {},
+    state = {},
     debug = {
         switch = true
     }
@@ -13,15 +14,17 @@ require("maze/game")
 require("maze/debug")
 
 function love.load()
+    maze.state[maze.step.MENU] = maze.menu;
+    maze.state[maze.step.GAME] = maze.game;
+
     maze.step.set(maze.step.MENU)
+
+    maze.debug.push("console...");
 end
 
 function love.draw()
-    if maze.step.get() == maze.step.MENU then
-        maze.menu.enter()
-    elseif maze.step.get() == maze.step.GAME then
-        maze.game.show()
-    end
+    maze.state[maze.step.get()].draw()
+
     maze.debug.show();
 end
 
@@ -29,11 +32,7 @@ function love.update()
 end
 
 function love.keypressed(key)
-    maze.debug.push(key);
+    maze.debug.push("keypress " .. key);
 
-    if key == "escape" then
-        love.event.quit()
-    elseif key == "return" then
-        maze.step.set(maze.step.GAME)
-    end
+    maze.state[maze.step.get()].keypressed(key)
 end

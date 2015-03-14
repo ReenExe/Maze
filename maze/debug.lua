@@ -32,7 +32,7 @@ if maze.debug.switch then
     end
 
     function maze.debug.push(value)
-        maze.debug.list[maze.debug.current] = value
+        maze.debug.list[maze.debug.current] = ":> " .. value
 
         maze.debug.current = maze.debug.current + 1;
     end
