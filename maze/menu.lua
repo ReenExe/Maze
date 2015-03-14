@@ -1,6 +1,4 @@
-maze.menu = {
-    welcome = "Menu Maze LÖVE"
-}
+maze.menu.welcome = "Menu Maze LÖVE"
 
 function maze.menu.enter()
     local width = love.window.getWidth()

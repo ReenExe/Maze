@@ -1,10 +1,6 @@
-local debug = maze.debug;
+if maze.debug.switch then
 
-maze.debug = {
-    list = {}
-}
-
-if debug then
+    maze.debug.list = {}
 
     maze.debug.current = 1;
 
