@@ -13,9 +13,9 @@ maze.game.move = {
     multi = 7
 }
 
-function maze.game.circle.move(dx, dy)
-    maze.game.circle.position.x = maze.game.circle.position.x + maze.game.move.multi * dx;
-    maze.game.circle.position.y = maze.game.circle.position.y + maze.game.move.multi * dy;
+function maze.game.circle.move(position, dx, dy)
+    position.x = position.x + maze.game.move.multi * dx;
+    position.y = position.y + maze.game.move.multi * dy;
 end
 
 function maze.game.draw()
@@ -32,6 +32,6 @@ function maze.game.keypressed(key)
     if key == "escape" then
         maze.step.set(maze.step.MENU)
     elseif maze.game.move[key] then
-        maze.game.circle.move(unpack(maze.game.move[key]));
+        maze.game.circle.move(maze.game.circle.position, unpack(maze.game.move[key]));
     end
 end
